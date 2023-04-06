@@ -1,6 +1,6 @@
 --Name: Blind SQL injection with time delays and information retrieval
 --URL: https://portswigger.net/web-security/sql-injection/blind/lab-time-delays-info-retrieval
---Level: Medium Time: 10 min
+--Level: Medium Time: 20 min
 ---------------------------------------------------------------------------------
 
 -- Objective: log in as the administrator user. 
