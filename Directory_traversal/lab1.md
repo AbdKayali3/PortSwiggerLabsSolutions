@@ -1,6 +1,6 @@
 # Blind SQL injection with conditional errors
 - Name: Blind SQL injection with conditional errors
-- URL: https://portswigger.net/web-security/sql-injection/blind/lab-conditional-errors
+- URL: https://portswigger.net/web-security/file-path-traversal/lab-simple
 - Level: Easy Time: 1 min
 ---------------------------------------------------------------------------------
 
