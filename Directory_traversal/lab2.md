@@ -1,7 +1,7 @@
 # File path traversal, traversal sequences blocked with absolute path bypass
 - Name: File path traversal, traversal sequences blocked with absolute path bypass
 - URL: https://portswigger.net/web-security/file-path-traversal/lab-absolute-path-bypass
-- Level: Easy Time: 1 min
+- Level: Medium Time: 1 min
 ---------------------------------------------------------------------------------
 
 
