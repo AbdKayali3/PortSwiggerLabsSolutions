@@ -2,6 +2,7 @@
 - Name: File path traversal, traversal sequences stripped non-recursively
 - URL: https://portswigger.net/web-security/file-path-traversal/lab-sequences-stripped-non-recursively
 - Level: Medium Time: 1 min
+- Objective: retrieve the contents of the `/etc/passwd` file.
 ---------------------------------------------------------------------------------
 
 

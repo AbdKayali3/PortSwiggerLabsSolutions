@@ -2,6 +2,7 @@
 - Name: File path traversal, traversal sequences blocked with absolute path bypass
 - URL: https://portswigger.net/web-security/file-path-traversal/lab-absolute-path-bypass
 - Level: Medium Time: 1 min
+- Objective: retrieve the contents of the `/etc/passwd` file.
 ---------------------------------------------------------------------------------
 
 

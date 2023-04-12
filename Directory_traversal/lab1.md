@@ -2,6 +2,7 @@
 - Name: Blind SQL injection with conditional errors
 - URL: https://portswigger.net/web-security/file-path-traversal/lab-simple
 - Level: Easy Time: 1 min
+- Objective: retrieve the contents of the `/etc/passwd` file.
 ---------------------------------------------------------------------------------
 
 
